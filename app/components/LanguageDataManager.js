@@ -1,19 +1,18 @@
-import { coreUseParams } from "@wrappid/core";
+import { coreUseParams, CoreDataTable, CoreBox } from "@wrappid/core";
 
 import LanguageEditorForm from "./LanguageEditorForm";
-import {CoreDataTable, CoreBox} from "@wrappid/core";
 
 export default function LanguageDataManager() {
-    const { key } = coreUseParams();
+  const { key } = coreUseParams();
 
-    return (
-        <CoreBox>
-            <CoreDataTable
-                hideForm={true}
-                entity={"DefaultStringValues"}
-                preRenderDetailsPaneComponent={LanguageEditorForm}
-                filterQuery={{ filter: key ? { key } : null }}
-            />
-        </CoreBox>
-    );
+  return (
+    <CoreBox>
+      <CoreDataTable
+        hideForm={true}
+        entity={"DefaultStringValues"}
+        preRenderDetailsPaneComponent={LanguageEditorForm}
+        filterQuery={{ filter: key ? { key } : null }}
+      />
+    </CoreBox>
+  );
 }

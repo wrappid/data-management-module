@@ -1,3 +1,1 @@
-export const urls = {
-    MASTER_DATA: "masterData/all",
-};
+export const urls = { MASTER_DATA: "masterData/all" };

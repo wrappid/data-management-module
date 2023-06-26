@@ -1,5 +1,5 @@
-import {CoreTypographyBody1} from "@wrappid/core";
+import { CoreTypographyBody1 } from "@wrappid/core";
 
 export default function ScrapedMedicines() {
-    return (<CoreTypographyBody1>Scraped Medicines</CoreTypographyBody1>);
+  return (<CoreTypographyBody1>Scraped Medicines</CoreTypographyBody1>);
 }

@@ -1,5 +1,5 @@
-import {CoreDataTable} from "@wrappid/core";
+import { CoreDataTable } from "@wrappid/core";
 
 export default function MedicineTestData() {
-    return <CoreDataTable entity={"TestMedicine"} />;
+  return <CoreDataTable entity={"TestMedicine"} />;
 }
