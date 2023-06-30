@@ -8,40 +8,34 @@ import InuseDiseases from "./components/InuseDiseases";
 import InuseMedicalTestData from "./components/InuseMedicalTestData";
 import InuseMedicines from "./components/InuseMedicines";
 import LanguageDataManager from "./components/LanguageDataManager";
+import LanguageEditorForm from "./components/LanguageEditorForm";
 import MasterData from "./components/MasterData";
 import MedicalTestData from "./components/MedicalTestData";
 import MedicineDatabase from "./components/MedicineDatabase";
 import MedicineTestData from "./components/MedicineTestData";
-import LanguageEditorForm from "./components/LanguageEditorForm";
-import SupportedLanguages from "./components/SupportedLanguages";
 import ScrapedDiseases from "./components/ScrapedDiseases";
 import ScrapedMedicalTestData from "./components/ScrapedMedicalTestData";
 import ScrapedMedicines from "./components/ScrapedMedicines";
+import SupportedLanguages from "./components/SupportedLanguages";
 
 export const ComponentRegistry = {
-  InuseDiseases              : { comp: InuseDiseases},
-  InuseMedicalTestData: { comp: InuseMedicalTestData},
-  LanguageDataManager : { comp: LanguageDataManager },
-  InuseMedicines      : { comp: InuseMedicines },
-  LanguageEditorForm  : { comp: LanguageEditorForm},
-  CrowdsourcedDiseases: {comp: CrowdsourcedDiseases,},
-  MasterData         : { comp: MasterData },
-  CrowdsourcedMedicalTestData: { comp: CrowdsourcedMedicalTestData},
-  MedicalTestData    : { comp: MedicalTestData},
-  BaseChemicals              : {
-        comp: BaseChemicals,
-    },
-  MedicineDatabase: {comp: MedicineDatabase,},
-  CrowdsourcedData  : { comp: CrowdsourcedData},
-  MedicineTestData: {
-        comp: MedicineTestData,
-    },
-  CrowdsourcedMedicines: { comp: CrowdsourcedMedicines },
-  Departments          : { comp: Departments },
-  SupportedLanguages: {
-        comp: SupportedLanguages,
-    },
-  ScrapedDiseases       : { comp: ScrapedDiseases },
-  ScrapedMedicalTestData: { comp: ScrapedMedicalTestData },
-  ScrapedMedicines      : { comp: ScrapedMedicines }
+  BaseChemicals              : { comp: BaseChemicals },
+  CrowdsourcedData           : { comp: CrowdsourcedData },
+  CrowdsourcedDiseases       : { comp: CrowdsourcedDiseases },
+  CrowdsourcedMedicalTestData: { comp: CrowdsourcedMedicalTestData },
+  CrowdsourcedMedicines      : { comp: CrowdsourcedMedicines },
+  Departments                : { comp: Departments },
+  InuseDiseases              : { comp: InuseDiseases },
+  InuseMedicalTestData       : { comp: InuseMedicalTestData },
+  InuseMedicines             : { comp: InuseMedicines },
+  LanguageDataManager        : { comp: LanguageDataManager },
+  LanguageEditorForm         : { comp: LanguageEditorForm },
+  MasterData                 : { comp: MasterData },
+  MedicalTestData            : { comp: MedicalTestData },
+  MedicineDatabase           : { comp: MedicineDatabase },
+  MedicineTestData           : { comp: MedicineTestData },
+  ScrapedDiseases            : { comp: ScrapedDiseases },
+  ScrapedMedicalTestData     : { comp: ScrapedMedicalTestData },
+  ScrapedMedicines           : { comp: ScrapedMedicines },
+  SupportedLanguages         : { comp: SupportedLanguages }
 };
