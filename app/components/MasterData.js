@@ -2,7 +2,7 @@ import React from "react";
 
 import { coreUseNavigate, coreUseParams, CoreDataTable } from "@wrappid/core";
 
-import { urls } from "../constants/constants";
+import { urls } from "../urls.registry";
 
 export default function MasterData() {
   const navigate = coreUseNavigate();
