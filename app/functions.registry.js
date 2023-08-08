@@ -1,73 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable id-length */
 // asyncSelect and formSubmitSanitization
 
-function nLevelGroup(data, parentId) {
-  let finalData = data
-    .filter((d) => d.parentId == parentId)
-    .map((h) => {
-      return {
-        ...h,
-        __children: nLevelGroup(data, h.id),
-      };
-    });
-    
-  return finalData;
-}
-    
-function nLevelFlat(data, finalData) {
-  for (let i = 0; i < data.length; i++) {
-    let ob = { ...data[i] };
-  
-    delete ob.__children;
-    finalData.push(ob);
-    finalData = nLevelFlat(data[i].__children, finalData);
-  }
-  return finalData;
-}
+import { masterData } from "./functions/asyncSelect.functions";
+import { SanChemDeptMap, SanChemDeptReadMap } from "./functions/sanity.functions";
 
-export const FunctionsRegistry = {
-  SanChemDeptMap: (formData, apiMeta, state, others) => {
-    // -- console.log("SANITING", apiMeta.endpoint, others);
-    return {
-      endpoint: apiMeta.endpoint.replace(":id", state?.mdm?.baseChemical?.id),
-      values  : nLevelFlat(formData, { chemDeptMap: nLevelFlat(formData.chemDeptMap, []) }),
-    };
-  },
+export const FunctionRegistry = {
+  SanChemDeptMap: SanChemDeptMap,
 
-  SanChemDeptReadMap: (data) => {
-    // -- console.log("SANITING", apiMeta, others);
-    let temp = data?.rows?.map((m) => {
-      return {
-        groupHead: m.parentId === null ? true : false,
-        hasEntry:
-            m?.ChemicalDepartments && m?.ChemicalDepartments?.length > 0
-              ? true
-              : false,
-        id      : m?.id,
-        name    : m?.name,
-        parentId: m?.parentId,
-        priority:
-            m?.ChemicalDepartments && m?.ChemicalDepartments?.length > 0
-              ? m?.ChemicalDepartments[0]?.priority
-              : 1,
-      };
-    });
+  SanChemDeptReadMap: SanChemDeptReadMap,
     
-    return { chemDeptMap: nLevelGroup(temp, null) };
-  },
-    
-  masterData: {
-    getOptionLabel: (data) => {
-      return data?.label || "";
-    },
-    getOptionValue: (data) => {
-      return data?.name || "";
-    },
-    isOptionsEqualToValue: (option, value) => {
-      return option?.name === value;
-    },
-  }
+  masterData: masterData
     
 };
 

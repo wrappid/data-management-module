@@ -1,4 +1,4 @@
-export const urls = {
+export const RouteRegistry = {
   BASE_CHEMICALS                        : "chemical/base",
   CHEMICAL_COMPOSITIONS                 : "chemical/compositions",
   DEPARTMENTS                           : "departments",

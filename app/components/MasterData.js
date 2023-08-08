@@ -2,7 +2,7 @@ import React from "react";
 
 import { coreUseNavigate, coreUseParams, CoreDataTable } from "@wrappid/core";
 
-import { urls } from "../urls.registry";
+import { RouteRegistry } from "../routes.registry";
 
 export default function MasterData() {
   const navigate = coreUseNavigate();
@@ -23,7 +23,7 @@ export default function MasterData() {
   }, [parentID]);
 
   const onChildClick = (data) => {
-    navigate("/" + urls.MASTER_DATA + "/" + data.id);
+    navigate("/" + RouteRegistry.MASTER_DATA + "/" + data.id);
   };
 
   // eslint-disable-next-line no-console
