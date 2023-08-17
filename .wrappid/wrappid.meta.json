@@ -1,4 +1,14 @@
 {
     "projectType": "module",
-    "projectID": ""
+    "projectID": "",
+    "projectName": "data-management",
+    "remote": true,
+    "repoProvider": "github.com",
+    "repoOwner": "wrappid",
+    "repoURL": "https://github.com/Rxefy/data-management-module.git",
+    "app": {
+        "renderType": []
+    },
+    "service": {},
+    "modules": {}
 }
