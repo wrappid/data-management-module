@@ -3,7 +3,7 @@
 import { masterData } from "./functions/asyncSelect.functions";
 import { SanChemDeptMap, SanChemDeptReadMap } from "./functions/sanity.functions";
 
-export const FunctionRegistry = {
+export const FunctionsRegistry = {
   SanChemDeptMap: SanChemDeptMap,
 
   SanChemDeptReadMap: SanChemDeptReadMap,

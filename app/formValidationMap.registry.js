@@ -1,1 +1,1 @@
-export const ValidationRegistry = {};
+export const ValidationsRegistry = {};

@@ -18,7 +18,7 @@ import ScrapedMedicalTestData from "./components/ScrapedMedicalTestData";
 import ScrapedMedicines from "./components/ScrapedMedicines";
 import SupportedLanguages from "./components/SupportedLanguages";
 
-export const ComponentRegistry = {
+export const ComponentsRegistry = {
   BaseChemicals              : { comp: BaseChemicals },
   CrowdsourcedData           : { comp: CrowdsourcedData },
   CrowdsourcedDiseases       : { comp: CrowdsourcedDiseases },
