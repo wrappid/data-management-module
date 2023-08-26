@@ -16,6 +16,7 @@ module.exports = {
     "etc",
     "import",
     "react",
+    "require-extensions",
     "sort-keys-fix",
     "unused-imports",
   ],

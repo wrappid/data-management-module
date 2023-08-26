@@ -1,9 +1,9 @@
-const test = require("./models/test.model");
+const TestDatas = require("./models/TestDatas.model");
 
 const modelsRegistry = {
-    "test": {
+    "TestDatas": {
         database: "application",
-        model   : test
+        model   : TestDatas
     }
 };
 
