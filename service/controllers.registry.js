@@ -1,11 +1,9 @@
-const testController = require("./controllers/test.controller");
+const dataManagementController = require("./controllers/dataManagement.controller")
+const { CoreMiddlewaresRegistry } = require("@wrappid/service-core");
+const {getMasterData} = require("./validations/dataManagement.validation")
 
 const controllersRegistry = {
-    "testGetAllFunc": testController.testGetAllFunc,
-    "testGetFunc": testController.testGetFunc,
-    "testPostFunc": testController.testPostFunc,
-    "testPutFunc": testController.testPutFunc,
-    "testPatchFunc": testController.testPatchFunc,
+    "masterData": [CoreMiddlewaresRegistry.validation(getMasterData) ,dataManagementController.masterData]
 };
 
 exports.controllersRegistry = controllersRegistry;

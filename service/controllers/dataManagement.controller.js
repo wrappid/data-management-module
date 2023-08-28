@@ -1,3 +1,25 @@
+const dataManagementFunctions = require("../functions/dataManagement.functions")
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+
+module.exports.masterData = async (req,res) => {
+  try{
+    let data = await dataManagementFunctions.getMasterDataUtil(req,res);
+    // console.log("API Call sucessfully");
+    let { status, ...restData } = data;
+    res.status(status).json(restData);
+  }catch(error){
+    console.error("Error:: ", error);
+    res.status(500).json({ message: error.message });
+  }         
+                  
+}
+
+
+
 /**
  * 
  * @param {*} req 
@@ -386,6 +408,7 @@ module.exports.getPrescriptionPdf = async (req , res) => {
                   ? prescription.Appointment.Patient.User.phone
                   : prescription.Patient.User.phone;
                 var patient = prescription.Appointment
+                
                   ? prescription.Appointment.Patient
                   : prescription.Patient.User;
                 var comRes = await communicate(
@@ -544,44 +567,6 @@ module.exports.generateALLStringVAlue = async (req , res) => {
       message: "String value generate error",
     });
   }
-}
-
-module.exports.getMasterData = async (req,res) => {
-  var level = req.query.level;
-  let whereOb = {
-    name: req.query.name,
-  };
-  if (req.query._status) {
-    whereOb["_status"] = req.query._status;
-  }
-  db.MasterData.findAll({
-    where: whereOb,
-  })
-    .then(async (data) => {
-      if (data.length == 1) {
-        console.log("master data fetched successfully", data.length);
-        if (level > 0) {
-          data = await masterDataProcessing(
-            data,
-            level,
-            db.MasterData,
-            whereOb._status
-          );
-        }
-        res
-          .status(200)
-          .json({ message: "Master data fetched successfully", data: data });
-      } else {
-        console.log("master data not found");
-        res
-          .status(500)
-          .json({ message: "master data not found", data: data });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ message: "Error to fetch master data" });
-    });
 }
 
 
