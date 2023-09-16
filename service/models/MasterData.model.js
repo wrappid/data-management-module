@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       defaultValue: "",
     },
-    crowdSourcing: {
+    crowdSource: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
