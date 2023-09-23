@@ -8,7 +8,8 @@ export const FunctionsRegistry = {
 
   SanChemDeptReadMap: SanChemDeptReadMap,
     
-  masterData: masterData
+  masterData: masterData,
+  DefaultLangEditDel : () => {}
     
 };
 
