@@ -1,4 +1,4 @@
-const {dataManagementFunctions,postDataFunc, postCloneFormschemaFunc, postUpdateStringValueFunc} = require("../functions/dataManagement.functions")
+const {dataManagementFunctions,postDataFunc, postCloneFormschemaFunc, postUpdateStringValueFunc, postDeleteStringValuesFunc} = require("../functions/dataManagement.functions")
 /**
  * 
  * @param {*} req 
@@ -116,6 +116,18 @@ module.exports.postUpdateStringValue = async (req, res) => {
   try{ 
     // res.status(200).json({message: "API call succesfully!!"});
     let result = await postUpdateStringValueFunc(req, res);
+    let {status, ...resdata} = result;
+    res.status(status).json({...resdata});
+  }catch(err){
+    console.log(err);
+    res.status(500).json({message: err});
+  }
+};
+
+module.exports.postDeleteStringValues = async (req, res) => {
+  try{
+    // res.status(200).json({ message: "API call sucessfully!!"});
+    let result = postDeleteStringValuesFunc(req, res);
     let {status, ...resdata} = result;
     res.status(status).json({...resdata});
   }catch(err){

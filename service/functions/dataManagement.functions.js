@@ -5,7 +5,7 @@ const {
   databaseProvider,
 } = require("@wrappid/service-core");
 
-const {getFormSchema,updateStringValue} = require("./datamanagement.helper");
+const {getFormSchema,updateStringValue, createStringValue} = require("./datamanagement.helper");
 
 async function masterDataProcessing(data, level, model, status) {
   if (level === 0 || data.length === 0) {
@@ -210,8 +210,23 @@ const postUpdateStringValueFunc = async (req, res) => {
 };
 
 
+const postDeleteStringValuesFunc = async (req, res) => {
+  try {
+    var data = await createStringValue( req);
+    console.log("Local data added");
+    return {status:200, message: "Local data added" };
+    // res.status(200).json({
+    //   message: "Local data added",
+    // });
+  } catch (err) {
+    console.error(err);
+    return {status:500, message: "Local data add error" };
+    // res.status(500).json({
+    //   message: "Local data add error",
+    // });
+  }
+};
 
 
 
-
-module.exports = { getMasterDataUtil, postDataFunc, postCloneFormschemaFunc, postCloneFormschemaFunc, postUpdateStringValueFunc };
+module.exports = { getMasterDataUtil, postDataFunc, postCloneFormschemaFunc, postCloneFormschemaFunc, postUpdateStringValueFunc, postDeleteStringValuesFunc };

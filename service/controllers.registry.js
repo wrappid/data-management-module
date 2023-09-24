@@ -10,7 +10,8 @@ const controllersRegistry = {
 
     postData: dataManagementController.postData,
     postCloneFormschema: dataManagementController.postCloneFormschema,
-    postUpdateStringValue: dataManagementController.postUpdateStringValue
+    postUpdateStringValue: dataManagementController.postUpdateStringValue,
+    postDeleteStringValues: dataManagementController.postDeleteStringValues
 };
 
 exports.controllersRegistry = controllersRegistry;

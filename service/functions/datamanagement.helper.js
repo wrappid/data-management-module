@@ -214,4 +214,28 @@ const updateStringValue = async (databaseProvider, req) => {
     return result;
   };
   
-  module.exports = {getFormSchema, updateStringValue};
+
+async function createStringValue(req) {
+    console.log("BODY", req.body);
+    // var table = req.body.table;
+    let data = databaseActions.findOne("application","StringValues",);
+    var whereOb = { key: req.body.key, locale: req.body.locale };
+  
+    let exists = await databaseActions.findAll("application","StringValues",{
+      attributes: ["id", "key", "locale"],
+      where: whereOb,
+    });
+  
+    if (exists && exists.length > 0) {
+      throw "Data exists for locale";
+    }
+  
+    let data = await databaseActions.create("application","StringValues",{
+      ...req.body,
+      _status: "active",
+      createdBy: req.user.userId,
+      updatedBy: req.user.userId,
+    });
+  }
+  
+  module.exports = {getFormSchema, updateStringValue, createStringValue};
