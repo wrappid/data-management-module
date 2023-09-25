@@ -12,9 +12,6 @@ const getMasterData = {
     .strict(),
 };
 
-const getModelData = {
-
-};
 
 
-module.exports = { getMasterData, getModelData }
+module.exports = { getMasterData }

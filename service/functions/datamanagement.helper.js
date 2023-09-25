@@ -106,7 +106,7 @@ async function generateFormSchema(modelName) {
       console.error("----------------------------------------");
       throw error;
     }
-  }
+  };
   
   /**
    *
@@ -143,7 +143,7 @@ async function generateFormSchema(modelName) {
       console.error("----------------------------------------");
       throw error;
     }
-  }
+  };
 
 
 const updateStringValue = async (databaseProvider, req) => {
@@ -218,7 +218,7 @@ const updateStringValue = async (databaseProvider, req) => {
 async function createStringValue(req) {
     console.log("BODY", req.body);
     // var table = req.body.table;
-    let data = databaseActions.findOne("application","StringValues",);
+    let result = databaseActions.findOne("application","StringValues",);
     var whereOb = { key: req.body.key, locale: req.body.locale };
   
     let exists = await databaseActions.findAll("application","StringValues",{
@@ -236,6 +236,24 @@ async function createStringValue(req) {
       createdBy: req.user.userId,
       updatedBy: req.user.userId,
     });
-  }
+  };
+ 
+const getRequiredDB = (selectedDB) => {
+    switch (selectedDB) {
+      case config.DB_CONST.RXEFY_MEDICINE_DB:
+        return medicineDB;
+      case config.DB_CONST.RXEFY_DB:
+      default:
+        return databaseProvider.application;
+    }
+  };
+
+const config = {
+    DB_CONST: {
+      RXEFY_DB: "RXEFY_DB",
+      RXEFY_MEDICINE_DB: "RXEFY_MEDICINE_DB",
+    },
+  };
   
-  module.exports = {getFormSchema, updateStringValue, createStringValue};
+  
+  module.exports = {getFormSchema, updateStringValue, createStringValue, getRequiredDB};
