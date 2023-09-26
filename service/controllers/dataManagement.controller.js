@@ -1,4 +1,4 @@
-const {getModelDataFunc, postDataFunc, postCloneFormschemaFunc, postUpdateStringValueFunc, postDeleteStringValuesFunc, getBusinessEntityFunc} = require("../functions/dataManagement.functions")
+const {getMasterDataUtil, getModelDataFunc, postDataFunc, postCloneFormschemaFunc, postUpdateStringValueFunc, postDeleteStringValuesFunc, getBusinessEntityFunc} = require("../functions/dataManagement.functions")
 /**
  * 
  * @param {*} req 
@@ -7,7 +7,7 @@ const {getModelDataFunc, postDataFunc, postCloneFormschemaFunc, postUpdateString
 
 module.exports.masterData = async (req,res) => {
   try{
-    let data = await dataManagementFunctions.getMasterDataUtil(req,res);
+    let data = await getMasterDataUtil(req,res);
     // console.log("API Call sucessfully");
     let { status, ...restData } = data;
     res.status(status).json(restData);
