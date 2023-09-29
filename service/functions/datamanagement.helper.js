@@ -219,7 +219,7 @@ async function createStringValue(req) {
     console.log("BODY", req.body);
     // var table = req.body.table;
     let result = databaseActions.findOne("application","StringValues",);
-    var whereOb = { key: req.body.key, locale: req.body.locale };
+    let whereOb = { key: req.body.key, locale: req.body.locale };
   
     let exists = await databaseActions.findAll("application","StringValues",{
       attributes: ["id", "key", "locale"],

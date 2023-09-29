@@ -17,10 +17,10 @@ async function masterDataProcessing(data, level, model, status) {
     return [];
   }
 
-  var currentLevelData = data;
+  let currentLevelData = data;
 
-  var finalData = [];
-  for (var i = 0; i < currentLevelData.length; i++) {
+  let finalData = [];
+  for (let i = 0; i < currentLevelData.length; i++) {
     let whereOb = {
       parentId: currentLevelData[i].id,
     };
@@ -28,7 +28,7 @@ async function masterDataProcessing(data, level, model, status) {
       whereOb["_status"] = status;
     }
 
-    var nextLevelData = await databaseActions.findAll("application", model, {
+    let nextLevelData = await databaseActions.findAll("application", model, {
       where: whereOb,
       order: [["order", "asc"]],
     });
@@ -47,7 +47,7 @@ async function masterDataProcessing(data, level, model, status) {
 
 const getMasterDataUtil = async (req, res) => {
   try {
-    var level = req.query.level || 10;
+    let level = req.query.level || 10;
     let whereOb = {
       name: req.query.name,
     };
@@ -124,7 +124,7 @@ const postDataFunc = async (req, res) => {
     });
 
     // update model
-    var result = await databaseActions.create("application", model, {
+    let result = await databaseActions.create("application", model, {
       ...body,
       createdBy: req.user.userId,
       updatedBy: req.user.userId,
@@ -214,7 +214,7 @@ const postCloneFormschemaFunc = async (req, res) => {
 
 const postUpdateStringValueFunc = async (req, res) => {
   try {
-    var data = await updateStringValue(databaseProvider, req);
+    let data = await updateStringValue(databaseProvider, req);
     console.log("Local data updated");
     return { status: 200, message: "Local data updateed successfully" };
     // res.status(200).json({
