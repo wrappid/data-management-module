@@ -1,5 +1,5 @@
 const Complaints = require("./models/Complaints.model");
-const MedicineCompanies = require("./models/MedicineCompanies.model");
+const MedicineCompanies = require("./models/MedicineCompany.model");
 const MedicineDetails = require("./models/MedicineDetails.model");
 const MedicinePackages = require("./models/MedicinePackages.model");
 const Medicines = require("./models/Medicines.model");
@@ -7,7 +7,7 @@ const ChemicalCompositions = require("./models/ChemicalCompositions.model");
 const CompositionDepartments = require("./models/CompositionDepartments.model");
 const Formulations = require("./models/Formulations.model");
 const Departments = require("./models/Departments.model");
-const Diagnoses = require("./models/Diagnoses.model");
+const Diagnoses = require("./models/Diagnosis.model");
 const Procedures = require("./models/Procedures.model");
 const Tests = require("./models/Tests.model");
 const Applications = require("./models/Applications.model");
