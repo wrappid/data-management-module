@@ -1,6 +1,7 @@
-const dataManagementValidations = require("./validations/dataManagement.validation")
+const dataManagementValidations = require("./validations/dataManagement.validation");
+
 const validationsRegistry = {
-    ...dataManagementValidations
+  ...dataManagementValidations
 };
 
 exports.validationsRegistry = validationsRegistry;

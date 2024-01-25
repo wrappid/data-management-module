@@ -14,4 +14,4 @@ const getMasterData = {
 
 
 
-module.exports = { getMasterData }
+module.exports = { getMasterData };

@@ -1,3 +1,1 @@
-export const stringTableManager = {
-
-};
+export const stringTableManager = {};
