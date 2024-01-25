@@ -1,30 +1,31 @@
 const Applications = require("./models/Applications.model");
 const DataTableOptions = require("./models/DataTableOptions.model");
 const MasterData = require("./models/MasterData.model");
-const SupportedLanguages = require("./models/SupportedLanguages.model");
 const StringValues = require("./models/StringValues.model");
+const SupportedLanguages = require("./models/SupportedLanguages.model");
+
 const modelsRegistry = {
  
-"Applications":{
+  "Applications":{
     database: "application",
     model: Applications
-},
-"DataTableOptions":{
+  },
+  "DataTableOptions":{
     database: "application",
     model: DataTableOptions
-},
-"MasterData":{
+  },
+  "MasterData":{
     database: "application",
     model: MasterData
-},
-"SupportedLanguages":{
+  },
+  "SupportedLanguages":{
     database: "application",
     model: SupportedLanguages
-},
-"StringValues": {
+  },
+  "StringValues": {
     database: "application",
     model: StringValues
-}
+  }
 };
 
 exports.modelsRegistry = modelsRegistry;

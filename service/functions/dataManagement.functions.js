@@ -1,6 +1,5 @@
 const {
   coreConstant,
-  configProvider,
   databaseActions,
   databaseProvider,
 } = require("@wrappid/service-core");
@@ -45,6 +44,7 @@ async function masterDataProcessing(data, level, model, status) {
   return finalData;
 }
 
+// eslint-disable-next-line no-unused-vars
 const getMasterDataUtil = async (req, res) => {
   try {
     let level = req.query.level || 10;
@@ -84,6 +84,7 @@ const getMasterDataUtil = async (req, res) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const postDataFunc = async (req, res) => {
   try {
     let model = req.params.model;
@@ -109,6 +110,7 @@ const postDataFunc = async (req, res) => {
         ].type
           .toString()
           .startsWith("JSON") &&
+        // eslint-disable-next-line no-prototype-builtins
         body.hasOwnProperty(rawAttribute) &&
         body[rawAttribute] !== ""
       ) {
@@ -118,6 +120,7 @@ const postDataFunc = async (req, res) => {
 
     // null if attribute value is empty
     Object.keys(body).forEach((_bodyKey) => {
+      // eslint-disable-next-line no-prototype-builtins
       if (!body.hasOwnProperty(_bodyKey) || body[_bodyKey] === "") {
         body[_bodyKey] = null;
       }
@@ -145,6 +148,7 @@ const postDataFunc = async (req, res) => {
     else throw new Error("Something went wrong");
   } catch (error) {
     console.error(error);
+    // eslint-disable-next-line no-undef
     return { status: 500, message: "Error to create " + model, error: error };
     // res.status(500).json({
     //   entity: model,
@@ -154,6 +158,7 @@ const postDataFunc = async (req, res) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const postCloneFormschemaFunc = async (req, res) => {
   try {
     let formID = req.params.formID;
@@ -212,9 +217,10 @@ const postCloneFormschemaFunc = async (req, res) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const postUpdateStringValueFunc = async (req, res) => {
   try {
-    let data = await updateStringValue(databaseProvider, req);
+    await updateStringValue(databaseProvider, req);
     console.log("Local data updated");
     return { status: 200, message: "Local data updateed successfully" };
     // res.status(200).json({
@@ -229,9 +235,10 @@ const postUpdateStringValueFunc = async (req, res) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const postDeleteStringValuesFunc = async (req, res) => {
   try {
-    let data = await createStringValue(req);
+    await createStringValue(req);
     console.log("Local data added");
     return { status: 200, message: "Local data added" };
     // res.status(200).json({
@@ -246,6 +253,7 @@ const postDeleteStringValuesFunc = async (req, res) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const getModelDataFunc = async (req, res) => {
   try {
     let _data = {
@@ -272,6 +280,7 @@ const getModelDataFunc = async (req, res) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const getBusinessEntityFunc = async (req, res) => {
   try {
     let database = req.params.database;
@@ -309,13 +318,12 @@ function getNormalCaseFromCamelCase(camelCase){
   const result = camelCase.replace(/([A-Z])/g, " $1");
   const normalCase = result.charAt(0).toUpperCase() + result.slice(1);
   return normalCase;
-};
+}
 
 
 module.exports = {
   getMasterDataUtil,
   postDataFunc,
-  postCloneFormschemaFunc,
   postCloneFormschemaFunc,
   postUpdateStringValueFunc,
   postDeleteStringValuesFunc,
