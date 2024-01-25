@@ -1,4 +1,4 @@
-const {getMasterDataUtil, getModelDataFunc, postDataFunc, postCloneFormschemaFunc, postUpdateStringValueFunc, postDeleteStringValuesFunc, getBusinessEntityFunc} = require("../functions/dataManagement.functions")
+const {getMasterDataUtil, getModelDataFunc, postDataFunc, postCloneFormschemaFunc, postUpdateStringValueFunc, postDeleteStringValuesFunc, getBusinessEntityFunc} = require("../functions/dataManagement.functions");
 /**
  * 
  * @param {*} req 
@@ -24,7 +24,7 @@ module.exports.getModelData = async (req,res) => {
     let result = await getModelDataFunc(req, res);
     let {status, ...resData} = result;
     res.status(status).json({...resData}); 
-      } catch (err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json({ message: err });
   }
@@ -81,9 +81,9 @@ module.exports.postDeleteStringValues = async (req, res) => {
 module.exports.getBusinessEntity = async (req, res) => {
   try{
   // res.status(200).json({message: "API call Succesfully!!"});
-  let result = await getBusinessEntityFunc(req, res);
-  let {status, ...resData} = result;
-  res.status(status).json({...resData});
+    let result = await getBusinessEntityFunc(req, res);
+    let {status, ...resData} = result;
+    res.status(status).json({...resData});
   }catch(err){
     console.log(err);
     res.status(500).json({message: err});
