@@ -104,11 +104,18 @@ jobs:
         id: git_diff
         run: |
           echo Searching for files added/changed in ${{ github.event.pull_request.head.ref }}, since the last commit in ${{ github.event.pull_request.base.ref }}
-          echo "FILES_TO_LINT=$(git diff --name-only ${{ github.event.pull_request.head.sha }}..${{ github.event.pull_request.base.sha }} \*.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
+          echo "FILES_TO_LINT=$(git diff --name-only --diff-filter=AM ${{ github.event.pull_request.head.sha }}..${{ github.event.pull_request.base.sha }} \*.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
 
       - name: Run ESLint for app
         run: |
-          npm run code:lint:app ${{ steps.git_diff.outputs.FILES_TO_LINT }}
+          FILES_TO_LINT=$(cat $GITHUB_EVENT_PATH | jq -r .pull_request.head.sha)..$(cat $GITHUB_EVENT_PATH | jq -r .pull_request.base.sha)
+          echo "FILES_TO_LINT=$(git diff --name-only --diff-filter=AM $FILES_TO_LINT *.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
+          
+          if [ -n "${FILES_TO_LINT}" ]; then
+            npm run code:lint:app ${FILES_TO_LINT}
+          else
+            echo "No files to lint."
+          fi
 
   codelint-service:
     name: Validate service code style
@@ -148,11 +155,18 @@ jobs:
         id: git_diff
         run: |
           echo Searching for files added/changed in ${{ github.event.pull_request.head.ref }}, since the last commit in ${{ github.event.pull_request.base.ref }}
-          echo "FILES_TO_LINT=$(git diff --name-only ${{ github.event.pull_request.head.sha }}..${{ github.event.pull_request.base.sha }} \*.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
+          echo "FILES_TO_LINT=$(git diff --name-only --diff-filter=AM ${{ github.event.pull_request.head.sha }}..${{ github.event.pull_request.base.sha }} \*.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
 
       - name: Run ESLint for service
         run: |
-          npm run code:lint:service ${{ steps.git_diff.outputs.FILES_TO_LINT }}
+          FILES_TO_LINT=$(cat $GITHUB_EVENT_PATH | jq -r .pull_request.head.sha)..$(cat $GITHUB_EVENT_PATH | jq -r .pull_request.base.sha)
+          echo "FILES_TO_LINT=$(git diff --name-only --diff-filter=AM $FILES_TO_LINT *.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
+          
+          if [ -n "${FILES_TO_LINT}" ]; then
+            npm run code:lint:service ${FILES_TO_LINT}
+          else
+            echo "No files to lint."
+          fi
 
   unit_tests:
     name: Run unit test cases
