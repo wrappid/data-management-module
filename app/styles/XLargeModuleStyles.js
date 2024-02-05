@@ -7,7 +7,7 @@ export default class XLargeModuleStyles extends XLargeCoreStyles {
       /**************************************************
        * Using XLargeUtilityStyles example
        *************************************************/
-      testWrappidStyleClass: { ...this.style.devBorder  },
+      testWrappidStyleClass: { ...this.styles.devBorder },
     };
   }
 }

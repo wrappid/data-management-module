@@ -7,7 +7,7 @@ export default class DefaultModuleStyles extends DefaultCoreStyles {
       /**************************************************
        * Using defaultUtilityStyles example
        *************************************************/
-      testWrappidStyleClass: { ...this.style.devBorder },
+      testWrappidStyleClass: { ...this.styles.devBorder },
     };
   }
 }
