@@ -1,8 +1,4 @@
-const {
-  coreConstant,
-  databaseActions,
-  databaseProvider,
-} = require("@wrappid/service-core");
+import { coreConstant, databaseActions, databaseProvider } from "@wrappid/service-core";
 
 const {
   getFormSchema,
@@ -241,15 +237,9 @@ const postDeleteStringValuesFunc = async (req, res) => {
     await createStringValue(req);
     console.log("Local data added");
     return { status: 200, message: "Local data added" };
-    // res.status(200).json({
-    //   message: "Local data added",
-    // });
   } catch (err) {
     console.error(err);
     return { status: 500, message: "Local data add error" };
-    // res.status(500).json({
-    //   message: "Local data add error",
-    // });
   }
 };
 

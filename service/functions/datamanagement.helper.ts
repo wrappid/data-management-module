@@ -1,12 +1,6 @@
-const {
-  coreConstant,
-  databaseProvider,
-  databaseActions,
-} = require("@wrappid/service-core");
+import { coreConstant, databaseProvider, databaseActions } from "@wrappid/service-core";
 
 const { httpMethod, entityStatus } = coreConstant;
-
-
 
 
 const getFormSchema = async (formID, auth = true) => {
@@ -29,27 +23,23 @@ const getFormSchema = async (formID, auth = true) => {
 async function generateFormSchema(modelName) {
   try {
     /**
-       * @todo check if present in business entity
-       */
+    * @todo check if present in business entity
+    */
   
-    // eslint-disable-next-line no-undef
-    let schema = await getEntitySchema(modelName);
+    const schema = await getEntitySchema(modelName);
     let fieldsData = [];
     if (schema && schema?.model) {
-      let entityDB = "application" || schema?.database;
-      // eslint-disable-next-line no-undef
+      const entityDB = "application" || schema?.database;
       fieldsData = getColumnsFromSchema(entityDB, schema)?.filter((col) => {
-        // eslint-disable-next-line no-undef
         return !auditAttributes.includes(col.id);
       });
-      fieldsData?.forEach((fieldData) => {
-        // eslint-disable-next-line no-undef
+      fieldsData?.forEach((fieldData:any) => {
         fieldData.type = getFieldType(fieldData.type);
       });
     }
   
-    let endpoint = "/data/" + modelName;
-    let formSchema = {
+    const endpoint = "/data/" + modelName;
+    const formSchema = {
       create: {
         endpoint: endpoint,
         method: httpMethod.HTTP_POST,
@@ -120,9 +110,9 @@ async function generateFormSchema(modelName) {
    */
 async function getFormSchemaFromDB(formID, auth) {
   try {
-    let dbName = "application";
-    let dbSequelize = databaseProvider[dbName].Sequelize;
-    let whereClause = {
+    const dbName = "application";
+    const dbSequelize = databaseProvider[dbName].Sequelize;
+    const whereClause = {
       formID: formID,
       _status: entityStatus.PUBLISHED,
     };
@@ -137,7 +127,7 @@ async function getFormSchemaFromDB(formID, auth) {
       };
     }
   
-    let formSchema = await databaseActions.findOne(dbName, "FormSchemas", {
+    const formSchema = await databaseActions.findOne(dbName, "FormSchemas", {
       where: whereClause,
     });
     return formSchema;
@@ -163,8 +153,8 @@ const updateStringValue = async (databaseProvider, req) => {
   // }
   
   const result = await databaseProvider.application.sequelize.transaction(
-    async (t) => {
-      let stringValue = await databaseActions.findOne(
+    async (t:any) => {
+      const stringValue = await databaseActions.findOne(
         "application",
         "StringValues",
         {
@@ -172,7 +162,11 @@ const updateStringValue = async (databaseProvider, req) => {
             id: req.params.id,
           },
         },
-        { transaction: t }
+        /**
+         * @todo
+         * Need to fix service-core findOne
+         */
+        // { transaction: t }
       );
       await databaseActions.update(
         "application",
@@ -190,7 +184,7 @@ const updateStringValue = async (databaseProvider, req) => {
       );
       console.log("Old data deactivated");
   
-      let freshData = {
+      const freshData = {
         // key: req.body.key,
         key: stringValue.key,
         value: req.body.value,
@@ -198,7 +192,7 @@ const updateStringValue = async (databaseProvider, req) => {
       };
       console.log("BODY", freshData);
   
-      let data = await databaseActions.create(
+      const data = await databaseActions.create(
         "application",
         "StringValues",
         {
@@ -223,10 +217,10 @@ const updateStringValue = async (databaseProvider, req) => {
 async function createStringValue(req) {
   console.log("BODY", req.body);
   // var table = req.body.table;
-  await databaseActions.findOne("application","StringValues",);
-  let whereOb = { key: req.body.key, locale: req.body.locale };
+  await databaseActions.findOne("application","StringValues", {});
+  const whereOb = { key: req.body.key, locale: req.body.locale };
   
-  let exists = await databaseActions.findAll("application","StringValues",{
+  const exists = await databaseActions.findAll("application","StringValues",{
     attributes: ["id", "key", "locale"],
     where: whereOb,
   });
@@ -246,7 +240,6 @@ async function createStringValue(req) {
 const getRequiredDB = (selectedDB) => {
   switch (selectedDB) {
     case config.DB_CONST.RXEFY_MEDICINE_DB:
-      // eslint-disable-next-line no-undef
       return medicineDB;
     case config.DB_CONST.RXEFY_DB:
     default:
@@ -262,4 +255,4 @@ const config = {
 };
   
   
-module.exports = {getFormSchema, updateStringValue, createStringValue, getRequiredDB};
+export default {getFormSchema, updateStringValue, createStringValue, getRequiredDB};

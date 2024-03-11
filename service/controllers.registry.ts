@@ -1,8 +1,7 @@
-const { CoreMiddlewaresRegistry } = require("@wrappid/service-core");
-const dataManagementController = require("./controllers/dataManagement.controller");
-const { getMasterData } = require("./validations/dataManagement.validation");
+import { CoreMiddlewaresRegistry } from "@wrappid/service-core";
 
-const controllersRegistry = {
+
+const ControllersRegistry = {
   masterData: [CoreMiddlewaresRegistry.validation(getMasterData), dataManagementController.masterData],
   getModelData: dataManagementController.getModelData,
 
@@ -14,5 +13,4 @@ const controllersRegistry = {
   postDeleteStringValues: dataManagementController.postDeleteStringValues,
   getBusinessEntity: dataManagementController.getBusinessEntity
 };
-
-exports.controllersRegistry = controllersRegistry;
+export default ControllersRegistry;
