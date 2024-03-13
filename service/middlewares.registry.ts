@@ -1,2 +1,2 @@
-const MiddlewaresRegistry = {};
-export default MiddlewaresRegistry;
+const middlewaresRegistry = {};
+export default middlewaresRegistry;

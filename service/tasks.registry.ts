@@ -1,2 +1,2 @@
-const TasksRegistry = {};
-export default TasksRegistry;
+const tasksRegistry = {};
+export default tasksRegistry;

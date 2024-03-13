@@ -1,2 +1,2 @@
-const FunctionsRegistry = {};
-export default FunctionsRegistry;
+const functionsRegistry = {};
+export default functionsRegistry;
