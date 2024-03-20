@@ -1,3 +1,3 @@
-const modelsRegistry = {};
+const ModelsRegistry = {};
 
-export default modelsRegistry;
+export default ModelsRegistry;

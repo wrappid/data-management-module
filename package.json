@@ -12,7 +12,8 @@
     "code:format:app": "npm run code:lint:app -- --fix",
     "code:lint:service": "eslint -c .eslintrc.js --ignore-path .gitignore service",
     "code:format:service": "npm run code:lint:service -- --fix",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest",
+    "release": "standard-version --bumpFiles ./package.json ./package-lock.json "
   },
   "license": "MIT",
   "author": {
