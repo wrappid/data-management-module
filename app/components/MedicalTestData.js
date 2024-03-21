@@ -7,5 +7,5 @@ export default function MedicalTestData() {
         <CoreTypographyBody1>Medical Test Data</CoreTypographyBody1>
       </CoreLayoutItem>
     </>
-  )
+  );
 }

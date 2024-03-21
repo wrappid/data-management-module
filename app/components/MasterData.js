@@ -39,7 +39,7 @@ export default function MasterData() {
           rowActions={[
             {
               action: onChildClick,
-              hide: (data) => {
+              hide  : (data) => {
                 // eslint-disable-next-line no-console
                 console.log("CHECKING CHILD", data);
                 if (data.id && data.Children && data.Children.length > 0) {
@@ -48,9 +48,9 @@ export default function MasterData() {
                   return true;
                 }
               },
-              icon: "chevron_right",
+              icon : "chevron_right",
               label: "Go to child",
-              type: "action",
+              type : "action",
             },
           ]}
         />

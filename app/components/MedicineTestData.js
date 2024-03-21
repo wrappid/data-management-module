@@ -7,5 +7,5 @@ export default function MedicineTestData() {
         <CoreDataTable entity={"TestMedicine"} />
       </CoreLayoutItem>
     </>
-  )
+  );
 }

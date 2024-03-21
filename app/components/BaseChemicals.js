@@ -7,5 +7,5 @@ export default function BaseChemicals() {
         <CoreTypographyBody1>Base Chemicals</CoreTypographyBody1>
       </CoreLayoutItem>
     </>
-  )
+  );
 }
