@@ -1,6 +1,6 @@
 import React from "react";
 
-import { coreUseNavigate, coreUseParams, CoreDataTable } from "@wrappid/core";
+import { coreUseNavigate, coreUseParams, CoreDataTable, CoreLayoutItem, AppContainerLayout } from "@wrappid/core";
 
 import { RoutesRegistry } from "../routes.registry";
 
@@ -29,28 +29,32 @@ export default function MasterData() {
   // eslint-disable-next-line no-console
   console.log("FILTER", filter);
   return (
-    <CoreDataTable
-      entity="LayeredMasterData"
-      filterQuery={{ filter: filter }}
-      createFormID="newMasterData"
-      updateFormID="newMasterData"
-      rowActions={[
-        {
-          action: onChildClick,
-          hide  : (data) => {
-            // eslint-disable-next-line no-console
-            console.log("CHECKING CHILD", data);
-            if (data.id && data.Children && data.Children.length > 0) {
-              return false;
-            } else {
-              return true;
-            }
-          },
-          icon : "chevron_right",
-          label: "Go to child",
-          type : "action",
-        },
-      ]}
-    />
+    <>
+      <CoreLayoutItem id={AppContainerLayout.PLACEHOLDER.CONTENT}>
+        <CoreDataTable
+          entity="LayeredMasterData"
+          filterQuery={{ filter: filter }}
+          createFormID="newMasterData"
+          updateFormID="newMasterData"
+          rowActions={[
+            {
+              action: onChildClick,
+              hide: (data) => {
+                // eslint-disable-next-line no-console
+                console.log("CHECKING CHILD", data);
+                if (data.id && data.Children && data.Children.length > 0) {
+                  return false;
+                } else {
+                  return true;
+                }
+              },
+              icon: "chevron_right",
+              label: "Go to child",
+              type: "action",
+            },
+          ]}
+        />
+      </CoreLayoutItem>
+    </>
   );
 }

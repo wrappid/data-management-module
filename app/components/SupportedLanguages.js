@@ -1,5 +1,11 @@
-import { CoreDataTable } from "@wrappid/core";
+import { CoreDataTable, CoreLayoutItem, AppContainerLayout } from "@wrappid/core";
 
 export default function SupportedLanguages() {
-  return <CoreDataTable entity="SupportedLanguages" enableCreate={true} />;
+  return (
+    <>
+      <CoreLayoutItem id={AppContainerLayout.PLACEHOLDER.CONTENT}>
+        <CoreDataTable entity="SupportedLanguages" enableCreate={true} />
+      </CoreLayoutItem>
+    </>
+  );
 }

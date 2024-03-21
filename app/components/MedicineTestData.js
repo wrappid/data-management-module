@@ -1,5 +1,11 @@
-import { CoreDataTable } from "@wrappid/core";
+import { CoreDataTable, CoreLayoutItem, AppContainerLayout } from "@wrappid/core";
 
 export default function MedicineTestData() {
-  return <CoreDataTable entity={"TestMedicine"} />;
+  return (
+    <>
+      <CoreLayoutItem id={AppContainerLayout.PLACEHOLDER.CONTENT}>
+        <CoreDataTable entity={"TestMedicine"} />
+      </CoreLayoutItem>
+    </>
+  )
 }
