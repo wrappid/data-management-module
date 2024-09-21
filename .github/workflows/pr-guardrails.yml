@@ -4,7 +4,33 @@ run-name: >
 
 on: pull_request_target
 
+env:
+  ALLOWED_MODIFIERS: "61864488"
+  # maintainer anantakumarghosh
+  # contact: antaghosh@gmail.com
+
 jobs:
+
+  check_sensitive_files:
+    name: Check for any sensitive file modifications
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check for sensitive file modifications
+        run: |
+          MODIFIED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
+          SENSITIVE_FILES=$(echo "$MODIFIED_FILES" | grep -E '^\.github/|^LICENSE$|^CONTRIBUTING\.md$' || true)
+          if [ ! -z "$SENSITIVE_FILES" ] && [ "${{ github.event.pull_request.user.id }}" != "${{ env.ALLOWED_USERNAME }}" ]; then
+            echo "Error: Unauthorized modification of sensitive files detected:"
+            echo "$SENSITIVE_FILES"
+            echo "Only user with ID 61864488 is allowed to modify these files."
+            exit 1
+          fi
+
 
   branchname:
     name: Validate branch name
