@@ -1,8 +1,6 @@
 import React from "react";
 
-import { coreUseNavigate, coreUseParams, CoreDataTable, CoreLayoutItem, AppContainerLayout } from "@wrappid/core";
-
-import { RoutesRegistry } from "../routes.registry";
+import { AppContainerLayout, CoreDataTable, CoreLayoutItem, coreUseNavigate, coreUseParams } from "@wrappid/core";
 
 export default function MasterData() {
   const navigate = coreUseNavigate();
@@ -23,7 +21,7 @@ export default function MasterData() {
   }, [parentID]);
 
   const onChildClick = (data) => {
-    navigate("/" + RoutesRegistry.MASTER_DATA + "/" + data.id);
+    navigate("/masterData/all/" + data.id);
   };
 
   // eslint-disable-next-line no-console
