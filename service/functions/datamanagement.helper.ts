@@ -35,7 +35,7 @@ const updateStringValue = async (databaseProvider:any, req:any) => {
         "StringValues",
         {
           _status: "inactive",
-          updatedBy: req.user.userId,
+          updatedBy: req.user.userID,
         },
         {
           where: {
@@ -60,8 +60,8 @@ const updateStringValue = async (databaseProvider:any, req:any) => {
         {
           ...freshData,
           _status: "active",
-          createdBy: req.user.userId,
-          updatedBy: req.user.userId,
+          createdBy: req.user.userID,
+          updatedBy: req.user.userID,
         },
         {
           transaction: t,
@@ -94,12 +94,12 @@ async function createStringValue(req:any) {
   await databaseActions.create("application","StringValues",{
     ...req.body,
     _status: "active",
-    createdBy: req.user.userId,
-    updatedBy: req.user.userId,
+    createdBy: req.user.userID,
+    updatedBy: req.user.userID,
   });
 }
  
 
   
   
-export {updateStringValue, createStringValue};
+export { createStringValue, updateStringValue };
