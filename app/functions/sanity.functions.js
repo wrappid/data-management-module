@@ -54,3 +54,10 @@ export const SanChemDeptReadMap = (data) => {
     
   return { chemDeptMap: nLevelGroup(temp, null) };
 };
+
+export function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta) {
+  return {
+    endpoint: apiMeta.endpoint + "/" + formData?.id,
+    values  : formData,
+  };
+};

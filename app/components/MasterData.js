@@ -21,7 +21,11 @@ export default function MasterData() {
   }, [parentID]);
 
   const onChildClick = (data) => {
-    navigate("/masterData/all/" + data.id);
+    navigate("/masterData/all/" + data?.id);
+  };
+  const onParentClick = (data) => {
+    // navigate("/masterData/all/" + data?.parentId);
+    navigate(-1);
   };
 
   // eslint-disable-next-line no-console
@@ -31,7 +35,7 @@ export default function MasterData() {
       <CoreLayoutItem id={AppContainerLayout.PLACEHOLDER.CONTENT}>
         <CoreDataTable
           entity="LayeredMasterData"
-          filterQuery={{ filter: filter }}
+          filterQuery={{ filter: {...filter, _status: {"ne": "deleted"}} }}
           createFormID="newMasterData"
           updateFormID="newMasterData"
           rowActions={[
@@ -48,6 +52,20 @@ export default function MasterData() {
               },
               icon : "chevron_right",
               label: "Go to child",
+              type : "action",
+            },{
+              action: onParentClick,
+              hide  : (data) => {
+                // eslint-disable-next-line no-console
+                console.log("CHECKING PARENT", data);
+                if (data?.parentId > 0) {
+                  return false;
+                } else {
+                  return true;
+                }
+              },
+              icon : "chevron_right",
+              label: "Go to parent",
               type : "action",
             },
           ]}
