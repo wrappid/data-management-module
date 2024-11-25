@@ -16,6 +16,7 @@ import MedicineTestData from "./components/MedicineTestData";
 import ScrapedDiseases from "./components/ScrapedDiseases";
 import ScrapedMedicalTestData from "./components/ScrapedMedicalTestData";
 import ScrapedMedicines from "./components/ScrapedMedicines";
+import StringValueInputField from "./components/StringValueInputField";
 import SupportedLanguages from "./components/SupportedLanguages";
 
 export const ComponentsRegistry = {
@@ -37,5 +38,6 @@ export const ComponentsRegistry = {
   ScrapedDiseases            : { comp: ScrapedDiseases },
   ScrapedMedicalTestData     : { comp: ScrapedMedicalTestData },
   ScrapedMedicines           : { comp: ScrapedMedicines },
+  StringValueInputField      : { comp: StringValueInputField },
   SupportedLanguages         : { comp: SupportedLanguages }
 };

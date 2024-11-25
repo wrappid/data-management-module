@@ -1,6 +1,6 @@
 import { databaseActions, databaseProvider } from "@wrappid/service-core";
 
-import { updateStringValue, createStringValue } from "./datamanagement.helper";
+import { createStringValue, generateStringValue, updateStringValue } from "./datamanagement.helper";
 
 async function masterDataProcessing(data:any, level:any, model:any, status:any) {
   if (level === 0 || data.length === 0) {
@@ -98,10 +98,17 @@ const postDeleteStringValuesFunc = async (req: any) => {
   }
 };
 
-
-
-export {
-  getMasterDataUtil,
-  postUpdateStringValueFunc,
-  postDeleteStringValuesFunc,
+const generateStringValuesFunc = async (req: any) => {
+  try {
+    await generateStringValue(req);
+    console.log("Local data added");
+    return { status: 200, message: "Local data added" };
+  } catch (err) {
+    console.error(err);
+    return { status: 500, message: "Local data add error" };
+  }
 };
+
+
+export { generateStringValuesFunc, getMasterDataUtil, postDeleteStringValuesFunc, postUpdateStringValueFunc };
+

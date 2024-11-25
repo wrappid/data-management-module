@@ -7,7 +7,7 @@ const ControllersRegistry = {
   masterData: [CoreMiddlewaresRegistry.validation(getMasterData), dataManagementController.masterData],
   postUpdateStringValue: dataManagementController.postUpdateStringValue,
   postDeleteStringValues: dataManagementController.postDeleteStringValues,
-  
+  generateStringValues: dataManagementController.generateStringValues
 
   // postCloneFormschema: dataManagementController.postCloneFormschema,
   // getModelData: dataManagementController.getModelData,
