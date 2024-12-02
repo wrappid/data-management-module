@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://https//github.com/wrappid/wrappid-module/compare/v0.0.2...v0.0.3) (2024-12-02)
+
+
+### Bug Fixes
+
+* :bug: data creation and updtion related issues ([8003763](https://https//github.com/wrappid/wrappid-module/commit/8003763d8e5526a85d7fd159d256eef700229a9b))
+* **core:** :bug: data management issue resolve ([c1a0ebf](https://https//github.com/wrappid/wrappid-module/commit/c1a0ebfd34a6fa1b1ac54670f78413572d2b9703))
+
 ### 0.0.2 (2024-11-21)
 
 
