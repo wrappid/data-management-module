@@ -73,5 +73,10 @@
         "statements": 0
       }
     }
+  },
+  "dependencies": {
+    "@wrappid/core": "0.0.593",
+    "@wrappid/styles": "0.0.178",
+    "@wrappid/service-core": "0.0.132"
   }
 }
