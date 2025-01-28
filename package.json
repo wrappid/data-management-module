@@ -1,6 +1,6 @@
 {
   "name": "data-management-module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This is data-management module Wrappid Project.",
   "main": "index.js",
   "scripts": {
